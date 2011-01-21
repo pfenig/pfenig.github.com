@@ -16,7 +16,7 @@ I was trying to have my has_one association return something other than nil when
       end
     end
   
-It was somewhat enlightening.  When I went to inspect thing, I didn't get my DummyThing when I expected it, I got "nil."  And when I tried to call find_target, I also got nil.  I started just calling random methods, they all returned nil, not method not found for NilClass, nut nil.
+It was somewhat enlightening.  When I went to inspect thing, I didn't get my DummyThing when I inpected it, I got "nil."  And when I tried to call find_target, I also got nil.  I started just calling random methods, they all returned nil, not "MethodNotFound for NilClass", but nil.
 Turns out that AssociationProxy pretty much removes all instance methods from association proxy and then delegates method missing to the target. 
 
     class AssociationProxy #:nodoc:
