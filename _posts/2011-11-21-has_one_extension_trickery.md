@@ -25,4 +25,4 @@ Turns out that AssociationProxy pretty much removes all instance methods from as
       delegate :to_param, :to => :proxy_target
       instance_methods.each { |m| undef_method m unless m.to_s =~ /^(?:nil\?|send|object_id|to_a)$|^__|^respond_to_missing|proxy_/ }
 
- But if you don't have a target, method missing always returns nil.  Still doesn't explain why it doesn't find my find_target and therefore not return nil.  Well, a bit of undocumented magic, as far as I could see, the block syntax doesn't work on has_one and belongs_to, you have to use ":extend => AssociationExtension"
+ But if you don't have a target, method missing always returns nil.  Still doesn't explain why it doesn't find my find_target and therefore not return nil.  Well, a bit of undocumented magic, as far as I could see, the block syntax doesn't work on has_one and belongs_to, you have to use ":extend => AssociationExtension".  Now it works. and thing will never return me a nil object again.
